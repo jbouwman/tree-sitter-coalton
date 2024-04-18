@@ -46,7 +46,6 @@ jobs:
         shell: bash
         run: |
           npm install
-          npm run build
           npm test
 
       - name: Check fidelity of checked-in C code
