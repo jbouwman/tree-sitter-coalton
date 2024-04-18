@@ -67,6 +67,42 @@
     "fields": {}
   },
   {
+    "type": "symbol",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "symbol_name",
+            "named": true
+          }
+        ]
+      },
+      "package": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "symbol_package",
+            "named": true
+          }
+        ]
+      },
+      "qualifier": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "symbol_qualifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "\"",
     "named": false
   },
@@ -87,7 +123,15 @@
     "named": true
   },
   {
-    "type": "symbol",
+    "type": "symbol_name",
+    "named": true
+  },
+  {
+    "type": "symbol_package",
+    "named": true
+  },
+  {
+    "type": "symbol_qualifier",
     "named": true
   }
 ]

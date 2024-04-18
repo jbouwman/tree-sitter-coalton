@@ -278,15 +278,109 @@
         }
       ]
     },
-    "symbol": {
-      "type": "TOKEN",
+    "_symbol_qualified": {
+      "type": "PREC",
+      "value": 1,
       "content": {
-        "type": "REPEAT1",
-        "content": {
-          "type": "PATTERN",
-          "value": "[^ \\r\\n\\t\\f\\v\\p{Zs}\\p{Zl}\\p{Zp}#;\"'`,(){}\\[\\]\\\\|]"
-        }
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "package",
+            "content": {
+              "type": "ALIAS",
+              "content": {
+                "type": "TOKEN",
+                "content": {
+                  "type": "REPEAT1",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "[^ \\r\\n\\t\\f\\v\\p{Zs}\\p{Zl}\\p{Zp}#:;\"'`,(){}\\[\\]\\\\|]"
+                  }
+                }
+              },
+              "named": true,
+              "value": "symbol_package"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "qualifier",
+            "content": {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": ":{1,2}"
+              },
+              "named": true,
+              "value": "symbol_qualifier"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "name",
+            "content": {
+              "type": "ALIAS",
+              "content": {
+                "type": "TOKEN",
+                "content": {
+                  "type": "REPEAT1",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "[^ \\r\\n\\t\\f\\v\\p{Zs}\\p{Zl}\\p{Zp}#:;\"'`,(){}\\[\\]\\\\|]"
+                  }
+                }
+              },
+              "named": true,
+              "value": "symbol_name"
+            }
+          }
+        ]
       }
+    },
+    "_symbol": {
+      "type": "FIELD",
+      "name": "name",
+      "content": {
+        "type": "ALIAS",
+        "content": {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "STRING",
+                "value": "/"
+              }
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "REPEAT1",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[^ \\r\\n\\t\\f\\v\\p{Zs}\\p{Zl}\\p{Zp}#:;\"'`,(){}\\[\\]\\\\|]"
+                }
+              }
+            }
+          ]
+        },
+        "named": true,
+        "value": "symbol_name"
+      }
+    },
+    "symbol": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_symbol_qualified"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_symbol"
+        }
+      ]
     },
     "list": {
       "type": "SEQ",
