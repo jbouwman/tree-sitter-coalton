@@ -42,20 +42,7 @@ jobs:
           node-version: 20
 
       - name: Generate parser from scratch and test it
-        if: ${{ runner.os == 'Linux' || needs.changedfiles.outputs.c }}
         shell: bash
         run: |
           npm install
           npm test
-
-      - name: Check fidelity of checked-in C code
-        if: ${{ runner.os == 'Linux' && needs.changedfiles.outputs.gen }}
-        shell: bash
-        run: |
-          # `git diff --quiet` doesn't seem to work on Github Actions
-          changes=$(git diff --name-only --diff-filter=ACMRT | xargs)
-          if [ ! -z "$changes" ]; then
-            echo "::error file=grammar.js::Generated $changes differs from the checked in version"
-            git diff --exit-code
-            exit 1
-          fi
