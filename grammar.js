@@ -35,7 +35,9 @@ module.exports = grammar({
     symbol: $ =>
         choice($._symbol_qualified, $._symbol),
 
-    list: $ => seq("(", repeat($._token), ")")
+    list: $ => seq(field("open", "("),
+                   repeat($._token),
+                   field("close", ")"))
   },
   
 })
