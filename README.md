@@ -1,5 +1,7 @@
 # tree-sitter-coalton
 
+Superseded by https://github.com/coalton-lang/tree-sitter-coalton
+
 [![CI][ci]](https://github.com/jbouwman/tree-sitter-coalton/actions/workflows/ci.yml)
 
 Coalton grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
